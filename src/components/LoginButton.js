@@ -8,10 +8,7 @@ class LoginButton extends Component {
 
     if (user === undefined) {
       return (
-        <Menu.Item
-          as='a'
-          name='login'
-        />
+        null
       )
     }
 

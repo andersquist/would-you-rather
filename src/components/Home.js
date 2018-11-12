@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Tab, Grid } from 'semantic-ui-react'
+import { Tab, Grid } from 'semantic-ui-react'
 import ListQuestions from './ListQuestions'
 
 const panes = [

@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading-bar'
 import Home from './Home'
+import Login from './Login'
 import {handleInitialData} from '../actions/shared'
 import Nav from './Nav'
 
@@ -11,13 +12,13 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
+      <Fragment>
         <LoadingBar />
         <Nav />
         {this.props.loading === true
           ? null
-          : <Home />}
-      </div>
+          : <Login />}
+      </Fragment>
     )
   }
 }

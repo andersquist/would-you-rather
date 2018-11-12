@@ -1,5 +1,5 @@
 import React from 'react'
-import { Menu, Container, Image } from 'semantic-ui-react'
+import { Menu, Container } from 'semantic-ui-react'
 import LoginButton from './LoginButton'
 
 const Nav = () => {
@@ -7,7 +7,7 @@ const Nav = () => {
     <Menu borderless>
       <Container>
         <Menu.Item as='a' name='home' active={true} />
-        <Menu.Item as='a' name='new questions' />
+        <Menu.Item as='a' name='new question' />
         <Menu.Item as='a' name='leader board' />
         <Menu.Menu position='right'>
           <LoginButton />
