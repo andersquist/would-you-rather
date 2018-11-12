@@ -1,10 +1,35 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {Grid, Segment, Button, Dropdown, Divider, Header, Image } from 'semantic-ui-react'
+import {setAuthedUser} from '../actions/authUser'
+import { Redirect } from 'react-router-dom'
 
 class Login extends Component {
+  state = {
+    userId: null,
+  }
+  handleSubmit = (e) => {
+    e.preventDefault()
+
+    const { userId } = this.state
+    const { dispatch } = this.props
+
+    dispatch(setAuthedUser(userId))
+
+    this.setState(() => ({
+      toHome: true,
+    }))
+  }
+  handleChange = (e, { value }) => {
+    this.setState({ userId: value })
+  }
+
   render() {
-    console.log(this.props)
+    const { toHome } = this.state
+
+    if (toHome === true) {
+      return <Redirect to='/' />
+    }
 
     const { users } = this.props
 
@@ -25,9 +50,20 @@ class Login extends Component {
             <Segment>
               <Image src='https://react.semantic-ui.com/logo.png' centered size='small'/>
               <Divider hidden />
-              <Button color='teal'>Sign In</Button>
-              <Divider hidden />
-              <Dropdown placeholder='Select User' fluid selection options={options}/>
+              <form onSubmit={this.handleSubmit}>
+                <Button
+                  color='teal'
+                  disabled={this.state.userId === null}
+                >Sign In</Button>
+                <Divider hidden />
+                <Dropdown
+                  placeholder='Select User'
+                  fluid
+                  selection
+                  options={options}
+                  onChange={this.handleChange}
+                />
+              </form>
             </Segment>
           </Segment.Group>
         </Grid.Column>

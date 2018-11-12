@@ -1,8 +1,16 @@
 import React, { Component, Fragment } from 'react'
+import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import {Image, Menu} from 'semantic-ui-react'
+import {setAuthedUser} from '../actions/authUser'
 
 class LoginButton extends Component {
+  handleLogout = () => {
+    const { dispatch } = this.props
+
+    dispatch(setAuthedUser(null))
+
+  }
   render() {
     const { user } = this.props
 
@@ -13,6 +21,7 @@ class LoginButton extends Component {
     }
 
     const { name, avatarURL } = user
+
     return (
       <Fragment>
         <Menu.Item>
@@ -25,7 +34,10 @@ class LoginButton extends Component {
             avatar />
         </Menu.Item>
         <Menu.Item
-          as='a'
+          as={NavLink}
+          to='/login'
+          onClick={this.handleLogout}
+          active={false}
           name='logout'
         />
       </Fragment>
