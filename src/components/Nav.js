@@ -7,9 +7,9 @@ const Nav = () => {
   return (
     <Menu borderless>
       <Container>
-        <Menu.Item as={NavLink} exact to="/"  name='home'/>
-        <Menu.Item as='a' name='new question' />
-        <Menu.Item as='a' name='leader board' />
+        <Menu.Item as={NavLink} exact to='/' name='home'/>
+        <Menu.Item as={NavLink} to='/add' name='new question' />
+        <Menu.Item as={NavLink} to='/leaderboard' name='leader board' />
         <Menu.Menu position='right'>
           <LoginButton />
         </Menu.Menu>

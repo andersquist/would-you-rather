@@ -1,18 +1,21 @@
 import React, { Component, Fragment } from 'react'
-import { Route, withRouter } from 'react-router-dom'
+import { Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading-bar'
 import Home from './Home'
 import Login from './Login'
 import {handleInitialData} from '../actions/shared'
 import Nav from './Nav'
+import NewQuestion from './NewQuestion'
+import LeaderBoard from './LeaderBoard'
+import QuestionPage from './QuestionPage'
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData())
   }
   render() {
-    const { location, history, loading, loggedIn } = this.props
+    const { location, loading, loggedIn } = this.props
     return (
       <Fragment>
         <LoadingBar />
@@ -23,8 +26,11 @@ class App extends Component {
           : loggedIn === true
             ? <div>
                 <Route path='/' exact component={Home} />
+                <Route path='/add' component={NewQuestion} />
+                <Route path='/leaderboard' component={LeaderBoard} />
+                <Route path='questions/:question_id' component={QuestionPage} />
               </div>
-            : location.pathname !== '/login' && history.push('/login') }
+            : location.pathname !== '/login' && <Redirect to='/login' /> }
       </Fragment>
     )
   }
