@@ -28,7 +28,7 @@ class App extends Component {
                 <Route path='/' exact component={Home} />
                 <Route path='/add' component={NewQuestion} />
                 <Route path='/leaderboard' component={LeaderBoard} />
-                <Route path='questions/:question_id' component={QuestionPage} />
+                <Route path='/questions/:question_id' component={QuestionPage} />
               </div>
             : location.pathname !== '/login' && <Redirect to='/login' /> }
       </Fragment>

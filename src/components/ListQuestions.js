@@ -1,15 +1,25 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Question from './Question'
-import { Card } from 'semantic-ui-react'
+import { Card, Message } from 'semantic-ui-react'
 
 const ListQuestions = (props) => {
   const { questionIds } = props
   return (
     <Card.Group itemsPerRow={1}>
-      {questionIds.map((id) => (
-        <Question key={id} id={id}/>
-      ))}
+      {questionIds.length > 0
+        ? questionIds.map((id) => (
+            <Question key={id} id={id}/>
+          ))
+        : (
+          <Message>
+            <Message.Header>God job!</Message.Header>
+              <p>
+                There are no more unanswered questions.
+              </p>
+          </Message>
+        )
+      }
     </Card.Group>
   )
 }

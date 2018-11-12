@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import {
   Card,
   Image,
@@ -17,7 +18,7 @@ class Question extends Component {
     }
 
     const { name, avatarURL } = author
-    const { optionOne } = question
+    const { optionOne, id } = question
     const { text } = optionOne
     return (
       <Card centered>
@@ -37,7 +38,7 @@ class Question extends Component {
                 <h4>Would you rather</h4>
                 <p>...{text}...</p>
                 <Divider hidden />
-                <Button basic color='teal' style={{ width: '100%' }}>
+                <Button as={Link} to={`/questions/${id}`} basic color='teal' style={{ width: '100%' }}>
                   View Poll
                 </Button>
               </Grid.Column>
