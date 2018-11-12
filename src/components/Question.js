@@ -1,34 +1,43 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import {
   Card,
   Image,
   Grid,
   Button,
+  Divider,
 } from 'semantic-ui-react'
 
 class Question extends Component {
   render() {
-    const author  = 'Tyler McGinnis'
-    const optionOne = 'have horrible short term memory'
-    const id = ''
+    const { author, question } = this.props
+
+    if (question === null) {
+      return <p>This Question doesn't exist</p>
+    }
+
+    const { name, avatarURL } = author
+    const { optionOne } = question
+    const { text } = optionOne
     return (
       <Card centered>
         <Card.Content>
-          <Card.Header>{author} asks:</Card.Header>
+          <Card.Header>{name} asks:</Card.Header>
         </Card.Content>
         <Card.Content>
           <Grid columns={2} divided>
             <Grid.Row>
-              <Grid.Column width={4}>
+              <Grid.Column width={5}>
                 <Image
                   size='tiny'
                   circular
-                  src='https://semantic-ui.com/images/avatar/large/matt.jpg'/>
+                  src={avatarURL}/>
               </Grid.Column >
-              <Grid.Column>
+              <Grid.Column width={11}>
                 <h4>Would you rather</h4>
-                <p>...{optionOne}...</p>
-                <Button basic color='teal'>
+                <p>...{text}...</p>
+                <Divider hidden />
+                <Button basic color='teal' style={{ width: '100%' }}>
                   View Poll
                 </Button>
               </Grid.Column>
@@ -40,4 +49,14 @@ class Question extends Component {
   }
 }
 
-export default Question
+function mapStateToProps({authedUser, users, questions}, {id}) {
+  const question = questions[id]
+  const author = question ? users[question.author] : null
+
+  return {
+    question,
+    author,
+  }
+}
+
+export default connect(mapStateToProps)(Question)
