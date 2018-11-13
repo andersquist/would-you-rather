@@ -4,7 +4,6 @@ import {Card, Image, Grid, Message, Header, Progress} from 'semantic-ui-react'
 
 class QuestionDetail extends Component {
   render () {
-    console.log(this.props)
     const { question, author, authedUser} = this.props
     const { name, avatarURL } = author
     const { optionOne, optionTwo } = question
