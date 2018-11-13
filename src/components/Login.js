@@ -51,10 +51,7 @@ class Login extends Component {
               <Image src='https://react.semantic-ui.com/logo.png' centered size='small'/>
               <Divider hidden />
               <form onSubmit={this.handleSubmit}>
-                <Button
-                  color='teal'
-                  disabled={this.state.userId === null}
-                >Sign In</Button>
+                <h2 className="ui teal header">Sign in</h2>
                 <Divider hidden />
                 <Dropdown
                   placeholder='Select User'
@@ -63,6 +60,11 @@ class Login extends Component {
                   options={options}
                   onChange={this.handleChange}
                 />
+                <Divider hidden />
+                <Button
+                  color='teal'
+                  disabled={this.state.userId === null}
+                >Sign In</Button>
               </form>
             </Segment>
           </Segment.Group>
