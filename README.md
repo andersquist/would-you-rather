@@ -1,8 +1,15 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Would You Rather
+A react app with asynchronous state handling using redux. <br>
+You can create polls and answer polls. There is also a leader board <br>
+that shows how well each user is doing i comparison to each other.
 
-## Available Scripts
+## How to get it to run
 
-In the project directory, you can run:
+In the project directory, you run the following to install all dependencies:
+
+### `npm install`
+
+And then followed by:
 
 ### `npm start`
 
