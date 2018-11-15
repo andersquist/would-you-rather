@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import QuestionDetail from './QuestionDetail'
 import VoteQuestion from './VoteQuestion'
+import {NotFound} from './NotFound'
 
 class QuestionPage extends Component {
   render() {
     const { question, authedUser} = this.props
 
-    if (question === null) {
-      return <p>This Question doesn't exist</p>
+    if (question === undefined) {
+      return <NotFound/>
     }
 
     const { id, optionOne, optionTwo } = question
@@ -28,7 +29,6 @@ class QuestionPage extends Component {
 function mapStateToProps({authedUser, questions, users},props) {
   const { question_id } = props.match.params
   const question = questions[question_id]
-
   return {
     question,
     authedUser,

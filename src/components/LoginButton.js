@@ -35,7 +35,7 @@ class LoginButton extends Component {
         </Menu.Item>
         <Menu.Item
           as={NavLink}
-          to='/login'
+          to='/'
           onClick={this.handleLogout}
           active={false}
           name='logout'

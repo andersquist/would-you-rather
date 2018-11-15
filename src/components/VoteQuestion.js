@@ -13,8 +13,6 @@ class VoteQuestion extends Component {
     const { value } = this.state
 
     dispatch(handleVoteOnQuestion(question.id, value))
-
-    console.log('SUBMIT!')
   }
 
   render () {
